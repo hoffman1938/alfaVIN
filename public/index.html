@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfa Romeo VIN Decoder - Free Detailed Equipment Report</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Decode any Alfa Romeo VIN for free. Get a complete factory equipment list, detailed options, technical specs, and original pricing from the window sticker. Supports Giulia, Stelvio, and Tonale.">
+    <meta name="keywords" content="alfa romeo vin decoder, alfa romeo options list, alfa romeo build sheet, window sticker, giulia vin decoder, stelvio vin decoder, tonale vin decoder">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alfavin.com/">
+    <meta property="og:title" content="Alfa Romeo VIN Decoder - Free Detailed Equipment Report">
+    <meta property="og:description" content="Decode any Alfa Romeo VIN for free. Get total MSRP, factory options, and build specs.">
+    <meta property="og:image" content="https://alfavin.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Alfa Romeo VIN Decoder - Free Detailed Equipment Report">
+    <meta property="twitter:description" content="Decode any Alfa Romeo VIN for free. Get total MSRP, factory options, and build specs.">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+    <!-- Top Ad Slot -->
+    <div class="ad-slot ad-top">
+        <span class="ad-label">ADVERTISEMENT</span>
+        <!-- Ad tag goes here -->
+    </div>
+
+    <header>
+        <a href="/" class="logo-link">
+            <img src="favicon.svg" alt="Alfa Romeo Logo">
+        </a>
+    </header>
+
+    <div class="layout-wrapper">
+        <!-- Left Sidebar Ad -->
+        <aside class="ad-sidebar ad-left">
+            <span class="ad-label">AD</span>
+            <!-- Ad tag goes here -->
+        </aside>
+
+        <div class="container">
+            <h1>ALFA VIN</h1>
+            <p class="subtitle">Detailed Vehicle Equipment Decoder</p>
+
+            <div class="search-box">
+                <input type="text" id="vinInput" placeholder="Enter 17-digit VIN..." maxlength="17" spellcheck="false">
+                <button id="decodeBtn" onclick="loadVin()">DECODE</button>
+            </div>
+
+            <div id="loader" class="loader hidden"></div>
+            <div id="error" class="subtitle hidden" style="color: #ef4444;"></div>
+
+            <div id="result" class="card hidden">
+                <!-- Content injected via JS -->
+            </div>
+
+            <!-- Bottom Ad Slot -->
+            <div class="ad-slot ad-bottom">
+                <span class="ad-label">ADVERTISEMENT</span>
+                <!-- Ad tag goes here -->
+            </div>
+
+            <footer>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+                <p>&copy; 2026 ALFA VIN. All rights reserved. Not affiliated with Stellantis N.V.</p>
+            </footer>
+        </div>
+
+        <!-- Right Sidebar Ad -->
+        <aside class="ad-sidebar ad-right">
+            <span class="ad-label">AD</span>
+            <!-- Ad tag goes here -->
+        </aside>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

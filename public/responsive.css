@@ -1,0 +1,102 @@
+@media (max-width: 1200px) {
+    .ad-sidebar {
+        display: none !important;
+    }
+    
+    .layout-wrapper {
+        gap: 0;
+    }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    header {
+        padding: 20px 0 5px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .logo-link img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .search-box {
+        flex-direction: column;
+        padding: 12px;
+        gap: 8px;
+    }
+
+    input {
+        padding: 10px;
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .ad-top {
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+
+    .model-title {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .features-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .msrp-footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .warranty-info {
+        max-width: 100%;
+    }
+
+    .msrp-value {
+        font-size: 1.8rem;
+    }
+
+    .notices-section {
+        margin-top: 40px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ad-top {
+        height: 50px;
+    }
+}
