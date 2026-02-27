@@ -1,6 +1,9 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
+import { serveStatic } from 'hono/cloudflare-workers'
 import { parseFcaWindowSticker } from './pdfParser.js'
+// @ts-expect-error - Provided by wrangler
+import manifest from '__STATIC_CONTENT_MANIFEST'
 
 const app = new Hono()
 
@@ -62,5 +65,9 @@ app.get('/api/vin/:vin', async (c) => {
     return c.json({ error: "Service temporarily unavailable. Please try again later.", details: err.message }, 500);
   }
 })
+
+// Serve static assets from the KV namespace created by Wrangler [site]
+app.get('/*', serveStatic({ root: './', manifest }))
+app.get('/', serveStatic({ path: 'index.html', manifest }))
 
 export default app
