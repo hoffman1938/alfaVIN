@@ -1,0 +1,6 @@
+name = "alfavin"
+compatibility_date = "2024-02-27"
+main = "src/index.js"
+
+[site]
+bucket = "./public"

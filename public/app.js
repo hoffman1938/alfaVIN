@@ -18,13 +18,41 @@ async function loadVin() {
     decodeBtn.disabled = true;
 
     try {
-        const res = await fetch(`http://localhost:3000/api/vin/${vin}`);
+        // Fetch raw PDF from our Hono proxy worker
+        const res = await fetch(`/api/vin/${vin}`);
         if (!res.ok) {
-            const error = await res.json();
-            throw new Error(error.error || "Failed to fetch vehicle data");
+            const errorText = await res.text();
+            let errMsg = "Failed to fetch vehicle data";
+            try { errMsg = JSON.parse(errorText).error; } catch(e){}
+            throw new Error(errMsg);
         }
         
-        const data = await res.json();
+        const arrayBuffer = await res.arrayBuffer();
+        
+        // Load PDF.js
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        
+        const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+        const pdfDocument = await loadingTask.promise;
+        
+        let fullText = '';
+        for (let i = 1; i <= pdfDocument.numPages; i++) {
+            const page = await pdfDocument.getPage(i);
+            const textContent = await page.getTextContent();
+            const pageText = textContent.items.map(item => item.str).join(' ');
+            fullText += pageText + ' \n';
+        }
+
+        // Parse Text to Structured Object using our parser
+        const structured = parseFcaWindowSticker(fullText);
+        
+        const data = {
+            vin,
+            source: "client-parse",
+            ...structured
+        };
+        
         renderData(data);
     } catch (err) {
         showError(err.message);
