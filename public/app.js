@@ -40,9 +40,20 @@ async function loadVin() {
         for (let i = 1; i <= pdfDocument.numPages; i++) {
             const page = await pdfDocument.getPage(i);
             const textContent = await page.getTextContent();
-            const pageText = textContent.items.map(item => item.str).join(' ');
-            fullText += pageText + ' \n';
+            
+            let pageText = '';
+            for (let item of textContent.items) {
+                pageText += item.str;
+                if (item.hasEOL) {
+                    pageText += '\n';
+                } else if (item.str !== ' ' && item.str !== '' && !pageText.endsWith(' ')) {
+                    pageText += ' ';
+                }
+            }
+            fullText += pageText + '\n\n';
         }
+        
+        console.log("Extracted PDF Text:", fullText);
 
         // Parse Text to Structured Object using our parser
         const structured = parseFcaWindowSticker(fullText);
